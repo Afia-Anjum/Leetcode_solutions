@@ -18,13 +18,5 @@ class Solution:
             return 0
         return answer
 
-
-#Prefix sum solution
-        # prefix_array=[]
-        # cur_sum=0
-        # for i in range(len(nums)):
-        #     cur_sum=cur_sum+nums[i]
-        #     prefix_array.append(cur_sum)
-        # print(prefix_array)
 ##########O(nlogn) soln would be??:
 
