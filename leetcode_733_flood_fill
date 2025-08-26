@@ -1,0 +1,25 @@
+class Solution:
+    def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
+        tmp_sr=sr
+        tmp_sc=sc
+        orig_color=image[sr][sc]
+        if orig_color==color:
+            return image
+        def color_image(tmp_sr,tmp_sc):
+            if image[tmp_sr][tmp_sc]==orig_color:
+                image[tmp_sr][tmp_sc]=color
+            if tmp_sc>0:
+                if image[tmp_sr][tmp_sc-1]==orig_color:
+                    color_image(tmp_sr,tmp_sc-1)
+            if tmp_sr<len(image)-1:
+                if image[tmp_sr+1][tmp_sc]==orig_color:
+                    color_image(tmp_sr+1,tmp_sc)
+            if tmp_sr>0: 
+                if image[tmp_sr-1][tmp_sc]==orig_color:
+                    color_image(tmp_sr-1,tmp_sc)
+            if tmp_sc<len(image[0])-1:
+                if image[tmp_sr][tmp_sc+1]==orig_color:
+                    color_image(tmp_sr,tmp_sc+1)
+        
+        color_image(tmp_sr,tmp_sc)
+        return image
