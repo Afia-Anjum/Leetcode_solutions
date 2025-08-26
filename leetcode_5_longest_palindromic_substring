@@ -1,0 +1,39 @@
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        if len(s)==0:
+            return s
+        left=0
+        right=1
+        str_to_return=s[0]
+        def is_palindrome(palind_string):
+            #print(palind_string)
+            low=0
+            high=len(palind_string)-1
+            flag=0
+            while(low<high):
+                if not palind_string[low]==palind_string[high]:
+                    flag=1
+                    break
+                else:
+                    low+=1
+                    high-=1
+            if flag==0:
+                return True
+            else:
+                return 
+        
+        for length in range(len(s),0,-1):
+            for start in range(len(s)-length+1):
+                if is_palindrome(s[start:start+length]):
+                    return s[start:start+length]
+        # longest_palindrome_length=1
+        # for right in range(1,len(s)):
+        #     print(s[left:right+1])
+        #     if is_palindrome(s[left:right+1]):
+        #         print("true")
+        #         if right-left+1 > longest_palindrome_length:
+        #             str_to_return=s[left:right+1]
+        #         longest_palindrome_length=max(longest_palindrome_length,right-left+1)
+        #         left+=1
+        # print(longest_palindrome_length)
+        # print(str_to_return)
