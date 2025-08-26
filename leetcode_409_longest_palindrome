@@ -1,0 +1,31 @@
+from collections import defaultdict
+class Solution:
+    def longestPalindrome(self, s: str) -> int:
+        counter=0
+        dict=defaultdict(int)
+        for i in s:
+            dict[i]+=1
+        if len(dict)==1:
+            return len(s)
+        flag=0
+        for key in dict.keys():
+            if dict[key]==1:
+                counter+=1
+                dict[key]-=1
+                flag=1
+                break
+        for key in dict.keys():
+            if dict[key]!=0 and dict[key]%2==0:
+                tmp=dict[key]
+                dict[key]-=tmp
+                counter=counter+tmp
+            if dict[key]%2!=0 and dict[key]!=1:
+                tmp=dict[key]-1
+                dict[key]-=tmp
+                counter=counter+tmp
+        for key in dict.keys():
+            if flag==0 and dict[key]==1:
+                counter+=1
+                dict[key]-=1
+                break
+        return counter
