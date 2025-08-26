@@ -1,0 +1,22 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        st=[]
+        brmap={'(': ')', '[': ']', '{': '}'}
+
+        for i in s:
+            # print(i)
+            if i in brmap.keys():
+                st.append(i)
+            else:
+                if len(st)==0:
+                    return False 
+                j= st.pop()
+                # print(i,j)
+                if brmap[j]!=i:
+                    # print("false")
+                    return False
+        if len(st)!=0:
+            return False
+        else: 
+            return True
+
